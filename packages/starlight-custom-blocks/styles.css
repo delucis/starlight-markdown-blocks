@@ -1,0 +1,30 @@
+.starlight-custom-block--color-blue {
+	--sl-color-asides-text-accent: var(--sl-color-blue-high);
+	--sl-color-asides-border: var(--sl-color-blue);
+	background-color: var(--sl-color-blue-low);
+}
+.starlight-custom-block--color-purple {
+	--sl-color-asides-text-accent: var(--sl-color-purple-high);
+	--sl-color-asides-border: var(--sl-color-purple);
+	background-color: var(--sl-color-purple-low);
+}
+.starlight-custom-block--color-orange {
+	--sl-color-asides-text-accent: var(--sl-color-orange-high);
+	--sl-color-asides-border: var(--sl-color-orange);
+	background-color: var(--sl-color-orange-low);
+}
+.starlight-custom-block--color-red {
+	--sl-color-asides-text-accent: var(--sl-color-red-high);
+	--sl-color-asides-border: var(--sl-color-red);
+	background-color: var(--sl-color-red-low);
+}
+.starlight-custom-block--color-green {
+	--sl-color-asides-text-accent: var(--sl-color-green-high);
+	--sl-color-asides-border: var(--sl-color-green);
+	background-color: var(--sl-color-green-low);
+}
+.starlight-custom-block--color-accent {
+	--sl-color-asides-text-accent: var(--sl-color-accent-high);
+	--sl-color-asides-border: var(--sl-color-accent);
+	background-color: var(--sl-color-accent-low);
+}

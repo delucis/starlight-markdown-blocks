@@ -1,0 +1,50 @@
+---
+title: starlight-custom-blocks
+description: Extend Starlight’s Markdown asides syntax with custom block types
+head:
+  - tag: title
+    content: starlight-custom-blocks
+  - tag: style
+    content: >-
+      .hero-html {
+        --size: 12rem;
+        font-size: var(--size);
+        justify-content: center;
+        line-height: var(--size);
+      }
+template: splash
+editUrl: false
+hero:
+  tagline: Extend Starlight’s Markdown asides syntax with custom block types
+  image:
+    html: '📝'
+  actions:
+    - text: Get Started
+      link: /getting-started/
+      icon: right-arrow
+---
+
+:::question
+We were wondering…
+:::
+
+:::tip
+Does this match?
+:::
+
+:::woah
+I can’t believe it
+:::
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## Next steps
+
+<CardGrid stagger>
+	<Card title="Install the plugin" icon="puzzle">
+		Check the [getting started guide](/getting-started/) for installation instructions.
+	</Card>
+	<Card title="Configure the plugin" icon="setting">
+		Edit your config in the `astro.config.mjs` file.
+	</Card>
+</CardGrid>

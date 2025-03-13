@@ -1,0 +1,32 @@
+{
+  "name": "starlight-custom-blocks-docs",
+  "version": "0.0.1",
+  "license": "MIT",
+  "description": "Extend Starlight’s Markdown asides syntax with custom block types",
+  "author": "delucis",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "^0.32.2",
+    "astro": "^5.4.3",
+    "sharp": "^0.33.5",
+    "starlight-custom-blocks": "workspace:*"
+  },
+  "engines": {
+    "node": "^18.17.1 || ^20.3.0 || >=21.0.0"
+  },
+  "private": true,
+  "homepage": "https://github.com/delucis/starlight-custom-blocks",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/delucis/starlight-custom-blocks.git",
+    "directory": "docs"
+  },
+  "bugs": "https://github.com/delucis/starlight-custom-blocks/issues"
+}
