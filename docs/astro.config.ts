@@ -3,6 +3,8 @@ import { defineConfig } from 'astro/config';
 import starlightMarkdownBlocks, { Aside, Draft } from 'starlight-markdown-blocks';
 
 export default defineConfig({
+	site: 'https://delucis.github.io',
+	base: '/starlight-markdown-blocks',
 	integrations: [
 		starlight({
 			title: 'Starlight Markdown Blocks',
