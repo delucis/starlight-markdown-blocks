@@ -9,10 +9,11 @@
 
 .smb-draft-block__title {
 	margin-inline: calc(-1 * var(--block-padding));
-	padding: var(--block-padding);
+	margin-bottom: var(--block-padding);
+	padding: 1rem;
 	background-color: var(--sl-color-orange-low);
 	font-size: var(--sl-text-body-sm);
 	font-weight: 700;
-	line-height: var(--sl-line-height-headings);
+	line-height: 1;
 	color: var(--sl-color-orange-high);
 }
