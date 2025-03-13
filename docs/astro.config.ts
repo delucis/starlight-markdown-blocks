@@ -1,15 +1,15 @@
 import starlight from '@astrojs/starlight';
 import { defineConfig } from 'astro/config';
-import starlightCustomBlocks, { Aside } from 'starlight-custom-blocks';
+import starlightMarkdownBlocks, { Aside } from 'starlight-markdown-blocks';
 
 export default defineConfig({
 	integrations: [
 		starlight({
 			editLink: {
-				baseUrl: 'https://github.com/delucis/starlight-custom-blocks/edit/main/docs/',
+				baseUrl: 'https://github.com/delucis/starlight-markdown-blocks/edit/main/docs/',
 			},
 			plugins: [
-				starlightCustomBlocks({
+				starlightMarkdownBlocks({
 					blocks: {
 						question: Aside({
 							label: 'Question',
@@ -32,9 +32,9 @@ export default defineConfig({
 				},
 			],
 			social: {
-				github: 'https://github.com/delucis/starlight-custom-blocks',
+				github: 'https://github.com/delucis/starlight-markdown-blocks',
 			},
-			title: 'starlight-custom-blocks',
+			title: 'Starlight Markdown Blocks',
 		}),
 	],
 });

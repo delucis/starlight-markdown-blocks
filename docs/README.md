@@ -1,4 +1,4 @@
-# `starlight-custom-blocks`
+# `starlight-markdown-blocks`
 
 Extend Starlight’s Markdown asides syntax with custom block types
 

@@ -1,5 +1,5 @@
 {
-  "name": "starlight-custom-blocks-monorepo",
+  "name": "starlight-markdown-blocks-monorepo",
   "version": "0.0.1",
   "license": "MIT",
   "description": "Extend Starlight’s Markdown asides syntax with custom block types",
@@ -10,10 +10,10 @@
   },
   "packageManager": "pnpm@9.6.0",
   "private": true,
-  "homepage": "https://github.com/delucis/starlight-custom-blocks",
+  "homepage": "https://github.com/delucis/starlight-markdown-blocks",
   "repository": {
     "type": "git",
-    "url": "https://github.com/delucis/starlight-custom-blocks.git"
+    "url": "https://github.com/delucis/starlight-markdown-blocks.git"
   },
-  "bugs": "https://github.com/delucis/starlight-custom-blocks/issues"
+  "bugs": "https://github.com/delucis/starlight-markdown-blocks/issues"
 }

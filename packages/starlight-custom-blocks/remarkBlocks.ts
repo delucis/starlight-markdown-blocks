@@ -6,7 +6,7 @@ import type { ContainerDirective } from 'mdast-util-directive';
 import { toString } from 'mdast-util-to-string';
 import type { Transformer } from 'unified';
 import { visit } from 'unist-util-visit';
-import type { RemarkCustomBlocksOptions } from './types';
+import type { MarkdownBlocksOptions } from './types';
 
 /** Hacky function that generates an mdast HTML tree ready for conversion to HTML by rehype. */
 function h(el: string, attrs: Properties = {}, children: any[] = []): P {
@@ -27,7 +27,7 @@ function isContainerDirective(node: Node): node is ContainerDirective {
  * remark plugin that converts blocks delimited with `:::` into styled blocks that look like
  * Starlight’s asides. Depends on the `remark-directive` module for the core parsing logic.
  */
-export function remarkCustomBlocks(options: RemarkCustomBlocksOptions): Transformer<Root> {
+export function remarkBlocks(options: MarkdownBlocksOptions): Transformer<Root> {
 	const builtInBlocks = ['note', 'tip', 'caution', 'danger'];
 	for (const key in options.blocks) {
 		if (builtInBlocks.includes(key)) {

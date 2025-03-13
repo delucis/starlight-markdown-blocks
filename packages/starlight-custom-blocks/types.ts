@@ -70,12 +70,12 @@ export interface MarkdownBlock {
 	}): Element | Element[];
 }
 
-export interface RemarkCustomBlocksOptions {
+export interface MarkdownBlocksOptions {
 	/**
-	 * A map of custom block variants to support.
+	 * A map of custom Markdown block types to support.
 	 *
 	 * @example
-	 * // This would enable a `:::idea` custom block syntax in Markdown and MDX files.
+	 * // This would enable `:::idea` block syntax in Markdown and MDX files.
 	 * blocks: {
 	 *   idea: {
 	 *     label: 'Idea',

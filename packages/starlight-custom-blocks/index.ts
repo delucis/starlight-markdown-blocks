@@ -1,6 +1,6 @@
 import type { StarlightPlugin } from '@astrojs/starlight/types';
-import type { RemarkCustomBlocksOptions } from './types';
-import { remarkCustomBlocks } from './remarkCustomBlocks';
+import { remarkBlocks } from './remarkBlocks';
+import type { MarkdownBlocksOptions } from './types';
 
 // Export built-in components.
 export * from './components';
@@ -11,30 +11,26 @@ export * from './components';
  *
  * @example
  * plugins: [
- *   starlightCustomBlocks({
+ *   starlightMarkdownBlocks({
  *     blocks: {
  *       idea: Aside({ label: 'Idea', icon: '💡' }),
  *     },
  *   }),
  * ],
  */
-export default function starlightCustomBlocks(options: RemarkCustomBlocksOptions): StarlightPlugin {
+export default function starlightMarkdownBlocks(options: MarkdownBlocksOptions): StarlightPlugin {
 	return {
-		name: 'starlight-custom-blocks',
+		name: 'starlight-markdown-blocks',
 		hooks: {
 			'config:setup'({ config, addIntegration, updateConfig }) {
 				updateConfig({
-					customCss: [...(config.customCss || []), 'starlight-custom-blocks/styles.css'],
+					customCss: [...(config.customCss || []), 'starlight-markdown-blocks/styles.css'],
 				});
 				addIntegration({
-					name: 'starlight-custom-blocks',
+					name: 'starlight-markdown-blocks',
 					hooks: {
 						'astro:config:setup'({ updateConfig }) {
-							updateConfig({
-								markdown: {
-									remarkPlugins: [[remarkCustomBlocks, options]],
-								},
-							});
+							updateConfig({ markdown: { remarkPlugins: [[remarkBlocks, options]] } });
 						},
 					},
 				});

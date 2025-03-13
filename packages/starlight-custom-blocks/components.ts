@@ -1,20 +1,20 @@
 import type { MarkdownBlock } from './types';
 
 interface AsideOptions {
-	/** The default label for this custom block variant. */
+	/** The default label for this custom aside variant. */
 	label: string;
 
-	/** The icon to display for this custom block variant. Can be any HTML value, e.g. an SVG string or an emoji. */
+	/** The icon to display for this custom aside variant. Can be any HTML value, e.g. an SVG string or an emoji. */
 	icon?: string;
 
 	/**
-	 * The color from Starlight’s palette to use for this custom block variant.
+	 * The color from Starlight’s palette to use for this custom aside variant.
 	 * @default 'accent'
 	 */
 	color?: 'blue' | 'purple' | 'red' | 'orange' | 'green' | 'accent';
 
 	/**
-	 * The HTML element to use to wrap this custom block variant.
+	 * The HTML element to use to wrap this custom aside variant.
 	 * @default 'div'
 	 */
 	element?: string;
@@ -33,7 +33,7 @@ interface AsideOptions {
 export const Aside = ({ label, icon, color, element = 'div' }: AsideOptions): MarkdownBlock => ({
 	label,
 
-	css: ['starlight-custom-blocks/styles.css'],
+	css: ['starlight-markdown-blocks/styles.css'],
 
 	render({ blockName, labelText, label, h, children }) {
 		return h(
@@ -49,10 +49,7 @@ export const Aside = ({ label, icon, color, element = 'div' }: AsideOptions): Ma
 			},
 			[
 				h('p', { class: 'starlight-aside__title', 'aria-hidden': 'true' }, [
-					{
-						type: 'html',
-						value: icon ? `<span class="starlight-aside__icon">${icon}</span>` : '',
-					},
+					{ type: 'html', value: icon ? `<span class="starlight-aside__icon">${icon}</span>` : '' },
 					h('span', {}, label),
 				]),
 				h('div', { class: 'starlight-aside__content' }, children),

@@ -19,7 +19,7 @@ importers:
       sharp:
         specifier: ^0.33.5
         version: 0.33.5
-      starlight-custom-blocks:
+      starlight-markdown-blocks:
         specifier: workspace:*
         version: link:../packages/starlight-custom-blocks
 
