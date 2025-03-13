@@ -33,7 +33,7 @@ interface AsideOptions {
 export const Aside = ({ label, icon, color, element = 'div' }: AsideOptions): MarkdownBlock => ({
 	label,
 
-	css: ['starlight-markdown-blocks/styles.css'],
+	css: ['starlight-markdown-blocks/styles/aside.css'],
 
 	render({ blockName, labelText, label, h, children }) {
 		return h(

@@ -19,12 +19,14 @@ export * from './components';
  * ],
  */
 export default function starlightMarkdownBlocks(options: MarkdownBlocksOptions): StarlightPlugin {
+	const cssFiles = [...new Set(Object.values(options.blocks).flatMap((block) => block.css ?? []))];
+
 	return {
 		name: 'starlight-markdown-blocks',
 		hooks: {
 			'config:setup'({ config, addIntegration, updateConfig }) {
 				updateConfig({
-					customCss: [...(config.customCss || []), 'starlight-markdown-blocks/styles.css'],
+					customCss: [...(config.customCss || []), ...cssFiles],
 				});
 				addIntegration({
 					name: 'starlight-markdown-blocks',
