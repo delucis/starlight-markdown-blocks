@@ -1,0 +1,15 @@
+.smb-preview {
+	--block-padding: calc(1.5 * var(--sl-content-pad-x));
+	border: 1px solid var(--sl-color-gray-5);
+	padding: 0 var(--block-padding) var(--block-padding);
+}
+
+.smb-preview__title {
+	margin-inline: calc(-1 * var(--block-padding));
+	margin-bottom: var(--block-padding);
+	padding: 1rem;
+	font-size: var(--sl-text-body-sm);
+	font-weight: 700;
+	line-height: 1;
+	background-color: var(--sl-color-gray-7, var(--sl-color-gray-6));
+}

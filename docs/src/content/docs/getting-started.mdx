@@ -2,7 +2,9 @@
 title: Getting Started
 ---
 
-Extend Starlight’s Markdown asides syntax with custom block types
+This plugin extends [Starlight’s Markdown asides syntax](https://starlight.astro.build/guides/authoring-content/#asides), so that it can be used to render custom block types.
+
+For example, just like you can use `:::tip` to render an aside in Starlight, you can use this plugin to add support for syntax such as `:::my-custom-block` and control how that renders.
 
 ## Prerequisites
 
@@ -11,7 +13,7 @@ If you don't have one yet, you can follow the ["Getting Started"](https://starli
 
 ## Installation
 
-import { Steps, Tabs, TabItem } from '@astrojs/starlight/components'
+import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
 
 <Steps>
 
@@ -45,24 +47,106 @@ import { Steps, Tabs, TabItem } from '@astrojs/starlight/components'
 
    </Tabs>
 
-2. Configure the plugin in your Starlight [configuration](https://starlight.astro.build/reference/configuration/#plugins) in the `astro.config.mjs` file.
+2. Add the plugin to your Starlight [configuration](https://starlight.astro.build/reference/configuration/#plugins) in the `astro.config.mjs` file.
 
-   ```diff lang="js"
+   ```js ins={4,11-15}
    // astro.config.mjs
-   import starlight from '@astrojs/starlight'
-   import { defineConfig } from 'astro/config'
-   +import starlightMarkdownBlocks from 'starlight-markdown-blocks'
+   import starlight from '@astrojs/starlight';
+   import { defineConfig } from 'astro/config';
+   import starlightMarkdownBlocks from 'starlight-markdown-blocks';
 
    export default defineConfig({
-     integrations: [
-       starlight({
-   +      plugins: [starlightMarkdownBlocks()],
-         title: 'My Docs',
-       }),
-     ],
-   })
+   	integrations: [
+   		starlight({
+   			title: 'My Docs',
+   			plugins: [
+   				starlightMarkdownBlocks({
+   					blocks: {
+   						// Blocks configuration
+   					},
+   				}),
+   			],
+   		}),
+   	],
+   });
    ```
 
-3. [Start the development server](https://starlight.astro.build/getting-started/#start-the-development-server) to preview the plugin in action.
+3. You can now add support for custom blocks by adding entries to the `blocks` configuration object.
 
 </Steps>
+
+## Configuring blocks
+
+Configure blocks by adding entries to the `blocks` object passed to the `starlightMarkdownBlocks()` plugin.
+Each key in `blocks` will become a name you can use in your Markdown files.
+For example, if you add an `idea` key, you will be able to use `:::idea` in your Markdown files to render that block type.
+
+The value of each block configuration defines how it should render.
+There are built-in block renderers for common use cases and you can also write your own.
+
+### Configuration example
+
+The following configuration example adds an `:::idea` block using the built-in `Aside` helper that renders like Starlight’s asides but with a custom label, color, and icon.
+It also adds a custom `:::figure` block to support authoring HTML `<figure>` and `<figcaption>` elements without having to write HTML directly.
+
+```js {4,12-18}
+// astro.config.mjs
+import starlight from '@astrojs/starlight';
+import { defineConfig } from 'astro/config';
+import starlightMarkdownBlocks, { Aside } from 'starlight-markdown-blocks';
+
+export default defineConfig({
+	integrations: [
+		starlight({
+			title: 'My Docs',
+			plugins: [
+				starlightMarkdownBlocks({
+					blocks: {
+						idea: Aside({ label: 'Idea', color: 'green', icon: '💡' }),
+						figure: {
+							render: ({ h, label, children }) =>
+								h('figure', {}, [...children, h('figcaption', {}, label)]),
+						},
+					},
+				}),
+			],
+		}),
+	],
+});
+```
+
+With this configuration, Markdown documents can use these new custom block types:
+
+```md title="example.md"
+:::idea
+I just thought of something!
+:::
+
+:::figure[— Donna Haraway, <cite>A Cyborg Manifesto</cite>]
+
+> One is too few, and two is only one possibility.
+
+:::
+```
+
+::::preview
+
+:::idea
+I just thought of something!
+:::
+
+:::figure[— Donna Haraway, <cite>A Cyborg Manifesto</cite>]
+
+> One is too few, and two is only one possibility.
+
+:::
+
+::::
+
+## Next steps
+
+Learn how to add different kinds of blocks.
+
+- [Add a custom aside block](/blocks/aside/)
+- [Add a draft block](/blocks/draft/)
+- [Add a custom block](#)
