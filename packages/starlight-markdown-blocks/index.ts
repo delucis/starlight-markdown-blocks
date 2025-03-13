@@ -2,8 +2,9 @@ import type { StarlightPlugin } from '@astrojs/starlight/types';
 import { remarkBlocks } from './remarkBlocks';
 import type { MarkdownBlocksOptions } from './types';
 
-// Export built-in components.
+// Export built-in components and types.
 export * from './components';
+export type { MarkdownBlock } from './types';
 
 /**
  * A Starlight plugin that provides support for custom Markdown block components using the same
