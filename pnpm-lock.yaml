@@ -21,9 +21,9 @@ importers:
         version: 0.33.5
       starlight-markdown-blocks:
         specifier: workspace:*
-        version: link:../packages/starlight-custom-blocks
+        version: link:../packages/starlight-markdown-blocks
 
-  packages/starlight-custom-blocks:
+  packages/starlight-markdown-blocks:
     dependencies:
       '@types/mdast':
         specifier: ^4.0.4
