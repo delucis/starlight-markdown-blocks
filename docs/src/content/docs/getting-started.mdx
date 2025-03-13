@@ -13,39 +13,14 @@ If you don't have one yet, you can follow the ["Getting Started"](https://starli
 
 ## Installation
 
-import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+import { Steps } from '@astrojs/starlight/components';
+import { PackageManagers } from 'starlight-package-managers';
 
 <Steps>
 
 1. `starlight-markdown-blocks` is a Starlight [plugin](https://starlight.astro.build/reference/plugins/). Install it by running the following command in your terminal:
 
-   <Tabs syncKey="pkg">
-
-   <TabItem label="npm">
-
-   ```sh
-   npm install starlight-markdown-blocks
-   ```
-
-   </TabItem>
-
-   <TabItem label="pnpm">
-
-   ```sh
-   pnpm add starlight-markdown-blocks
-   ```
-
-   </TabItem>
-
-   <TabItem label="Yarn">
-
-   ```sh
-   yarn add starlight-markdown-blocks
-   ```
-
-   </TabItem>
-
-   </Tabs>
+   <PackageManagers pkg="starlight-markdown-blocks" />
 
 2. Add the plugin to your Starlight [configuration](https://starlight.astro.build/reference/configuration/#plugins) in the `astro.config.mjs` file.
 

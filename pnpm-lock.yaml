@@ -29,6 +29,9 @@ importers:
       starlight-markdown-blocks:
         specifier: workspace:*
         version: link:../packages/starlight-markdown-blocks
+      starlight-package-managers:
+        specifier: ^0.10.0
+        version: 0.10.0(@astrojs/starlight@0.32.2(astro@5.5.2(rollup@4.35.0)(typescript@5.8.2)))
 
   packages/starlight-markdown-blocks:
     dependencies:
@@ -1798,6 +1801,12 @@ packages:
 
   sprintf-js@1.0.3:
     resolution: {integrity: sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==}
+
+  starlight-package-managers@0.10.0:
+    resolution: {integrity: sha512-ndliTHXzaCIQ2FFnq5KIH5Uhs9FCACeS3XQMtx/35aSPXzeGsoGxBNreC1zBif4yzGZRCJN3kXBqjUO82WDtcA==}
+    engines: {node: '>=18.17.1'}
+    peerDependencies:
+      '@astrojs/starlight': '>=0.22.0'
 
   stream-replace-string@2.0.0:
     resolution: {integrity: sha512-TlnjJ1C0QrmxRNrON00JvaFFlNh5TTG00APw23j74ET7gkQpTASi6/L2fuiav8pzK715HXtUeClpBTw2NPSn6w==}
@@ -4509,6 +4518,10 @@ snapshots:
       signal-exit: 4.1.0
 
   sprintf-js@1.0.3: {}
+
+  starlight-package-managers@0.10.0(@astrojs/starlight@0.32.2(astro@5.5.2(rollup@4.35.0)(typescript@5.8.2))):
+    dependencies:
+      '@astrojs/starlight': 0.32.2(astro@5.5.2(rollup@4.35.0)(typescript@5.8.2))
 
   stream-replace-string@2.0.0: {}
 
