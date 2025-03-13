@@ -15,7 +15,7 @@ interface AsideOptions {
 
 	/**
 	 * The HTML element to use to wrap this custom aside variant.
-	 * @default 'div'
+	 * @default 'aside'
 	 */
 	element?: string;
 }
@@ -37,7 +37,7 @@ export const Aside = ({ label, icon, color, element = 'div' }: AsideOptions): Ma
 
 	render({ blockName, labelText, label, h, children }) {
 		return h(
-			element || 'div',
+			element || 'aside',
 			{
 				'aria-label': labelText,
 				class: [
