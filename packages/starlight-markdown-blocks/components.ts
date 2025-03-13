@@ -57,3 +57,31 @@ export const Aside = ({ label, icon, color, element = 'div' }: AsideOptions): Ma
 		);
 	},
 });
+
+/**
+ * Block component that only renders its contents during `astro dev`.
+ *
+ * This can be useful for working on content locally and committing it without yet displaying it
+ * in the published website.
+ *
+ * @example
+ * blocks: {
+ *   // Add support for `:::draft` blocks that are hidden in the production site
+ *   draft: Draft(),
+ * },
+ */
+export const Draft = ({ label = 'Draft' } = {}): MarkdownBlock => ({
+	label,
+
+	css: ['starlight-markdown-blocks/styles/draft.css'],
+
+	render: ({ h, children, label }) => {
+		const isDev = process.argv.includes('dev');
+		return isDev
+			? h('div', { class: 'smb-draft-block' }, [
+					h('p', { class: 'smb-draft-block__title' }, label),
+					h('div', {}, children),
+			  ])
+			: [];
+	},
+});

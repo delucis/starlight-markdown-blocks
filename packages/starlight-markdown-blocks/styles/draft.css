@@ -1,0 +1,19 @@
+.smb-draft-block {
+	--block-padding: calc(0.75 * var(--sl-content-pad-x));
+	margin-inline: calc(-1 * var(--block-padding));
+	border: 2px solid var(--sl-color-orange-low);
+	border-radius: calc(var(--block-padding) / 2);
+	padding: 0 var(--block-padding) var(--block-padding);
+	box-shadow: var(--sl-shadow-md);
+}
+
+.smb-draft-block__title {
+	margin-inline: calc(-1 * var(--block-padding));
+	padding: var(--block-padding);
+	background-color: var(--sl-color-orange-low);
+	font-size: var(--sl-text-body-sm);
+	font-weight: 700;
+	line-height: var(--sl-line-height-headings);
+	color: var(--sl-color-orange-high);
+	/* text-transform: uppercase; */
+}

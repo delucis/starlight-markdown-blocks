@@ -1,6 +1,6 @@
 import starlight from '@astrojs/starlight';
 import { defineConfig } from 'astro/config';
-import starlightMarkdownBlocks, { Aside } from 'starlight-markdown-blocks';
+import starlightMarkdownBlocks, { Aside, Draft } from 'starlight-markdown-blocks';
 
 export default defineConfig({
 	integrations: [
@@ -25,7 +25,7 @@ export default defineConfig({
 							render: ({ h, label, children }) =>
 								h('figure', {}, [...children, h('figcaption', {}, label)]),
 						},
-						delete: { render: () => [] },
+						delete: Draft(),
 					},
 				}),
 			],
