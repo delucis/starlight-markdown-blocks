@@ -1,6 +1,6 @@
 {
 	"name": "starlight-markdown-blocks",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"license": "MIT",
 	"description": "Extend Starlight’s Markdown asides syntax with custom block types",
 	"author": "delucis",
