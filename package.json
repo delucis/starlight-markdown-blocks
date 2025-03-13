@@ -10,7 +10,7 @@
 	},
 	"packageManager": "pnpm@9.6.0",
 	"private": true,
-	"homepage": "https://github.com/delucis/starlight-markdown-blocks",
+	"homepage": "https://delucis.github.io/starlight-markdown-blocks/",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/delucis/starlight-markdown-blocks.git"
