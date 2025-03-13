@@ -2,7 +2,7 @@
 
 import { h as _h, type Properties } from 'hastscript';
 import type { Node, Paragraph as P, PhrasingContent, Root } from 'mdast';
-import { type Directives } from 'mdast-util-directive';
+import type { ContainerDirective } from 'mdast-util-directive';
 import { toString } from 'mdast-util-to-string';
 import type { Transformer } from 'unified';
 import { visit } from 'unist-util-visit';
@@ -18,13 +18,9 @@ function h(el: string, attrs: Properties = {}, children: any[] = []): P {
 	};
 }
 
-/** Checks if a node is a directive. */
-function isNodeDirective(node: Node): node is Directives {
-	return (
-		node.type === 'textDirective' ||
-		node.type === 'leafDirective' ||
-		node.type === 'containerDirective'
-	);
+/** Checks if a node is a container directive. */
+function isContainerDirective(node: Node): node is ContainerDirective {
+	return node.type === 'containerDirective';
 }
 
 /**
@@ -32,9 +28,9 @@ function isNodeDirective(node: Node): node is Directives {
  * Starlight’s asides. Depends on the `remark-directive` module for the core parsing logic.
  */
 export function remarkCustomBlocks(options: RemarkCustomBlocksOptions): Transformer<Root> {
-	const builtInVariants = ['note', 'tip', 'caution', 'danger'];
-	for (const key in options.variants) {
-		if (builtInVariants.includes(key)) {
+	const builtInBlocks = ['note', 'tip', 'caution', 'danger'];
+	for (const key in options.blocks) {
+		if (builtInBlocks.includes(key)) {
 			throw new Error(
 				`Cannot overwrite Starlight’s built-in "${key}" aside with a custom block. ` +
 					`Please choose a different name in the Starlight Custom Block variants configuration.`
@@ -44,24 +40,19 @@ export function remarkCustomBlocks(options: RemarkCustomBlocksOptions): Transfor
 
 	return (tree) => {
 		visit(tree, (node, index, parent) => {
-			if (
-				!parent ||
-				index === undefined ||
-				!isNodeDirective(node) ||
-				node.type !== 'containerDirective'
-			) {
+			if (!parent || index === undefined || !isContainerDirective(node)) {
 				return;
 			}
-			const variant = node.name;
-			const variantConfig = options.variants[variant];
-			if (!variantConfig) return;
+			const blockName = node.name;
+			const blockConfig = options.blocks[blockName];
+			if (!blockConfig) return;
 
 			// remark-directive converts a container’s “label” to a paragraph added as the head of its
 			// children with the `directiveLabel` property set to true. We want to use it as the title
 			// for the block, so when we find a directive label, we store it to use later and
 			// remove the paragraph from the container’s children.
-			let title = variantConfig.label;
-			let titleNode: PhrasingContent[] = [{ type: 'text', value: title }];
+			let labelText = blockConfig.label ?? '';
+			let label: PhrasingContent[] = [{ type: 'text', value: labelText }];
 			const firstChild = node.children[0];
 			if (
 				firstChild?.type === 'paragraph' &&
@@ -69,38 +60,22 @@ export function remarkCustomBlocks(options: RemarkCustomBlocksOptions): Transfor
 				'directiveLabel' in firstChild.data &&
 				firstChild.children.length > 0
 			) {
-				titleNode = firstChild.children;
-				title = toString(firstChild.children);
+				label = firstChild.children;
+				labelText = toString(firstChild.children).trim();
 				// The first paragraph contains a directive label, we can safely remove it.
 				node.children.splice(0, 1);
 			}
 
-			const block = h(
-				variantConfig.element || 'div',
-				{
-					'aria-label': title,
-					class: [
-						'starlight-aside',
-						'starlight-custom-block',
-						`starlight-custom-block--color-${variantConfig.color || 'accent'}`,
-						`starlight-custom-block--${variant}`,
-					].join(' '),
-				},
-				[
-					h('p', { class: 'starlight-aside__title', 'aria-hidden': 'true' }, [
-						{
-							type: 'html',
-							value: variantConfig.icon
-								? `<span class="starlight-aside__icon">${variantConfig.icon}</span>`
-								: '',
-						},
-						...titleNode,
-					]),
-					h('div', { class: 'starlight-aside__content' }, node.children),
-				]
-			);
+			const block = blockConfig.render({
+				blockName,
+				h,
+				label,
+				labelText,
+				children: node.children,
+				attributes: node.attributes ?? {},
+			});
 
-			parent.children[index] = block;
+			parent.children.splice(index, 1, ...(Array.isArray(block) ? block : [block]));
 		});
 	};
 }

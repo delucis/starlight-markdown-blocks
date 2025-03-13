@@ -1,21 +1,73 @@
-interface CustomBlockVariant {
-	/** The default label for this custom block variant. */
-	label: string;
+import type { Properties } from 'hastscript';
+import type {
+	BlockContent,
+	DefinitionContent,
+	ListItem,
+	PhrasingContent,
+	RootContent,
+	TableCell,
+	TableRow,
+} from 'mdast';
+import type { ContainerDirective } from 'mdast-util-directive';
 
-	/** The icon to display for this custom block variant. Can be any HTML value, e.g. an SVG string or an emoji. */
-	icon?: string;
+type Element =
+	| PhrasingContent
+	| BlockContent
+	| DefinitionContent
+	| RootContent
+	| ListItem
+	| TableRow
+	| TableCell;
 
-	/**
-	 * The color from Starlight’s palette to use for this custom block variant.
-	 * @default 'accent'
-	 */
-	color?: 'blue' | 'purple' | 'red' | 'orange' | 'green' | 'accent';
+export interface MarkdownBlock {
+	label?: string | undefined;
 
-	/**
-	 * The HTML element to use to wrap this custom block variant.
-	 * @default 'div'
-	 */
-	element?: string;
+	css?: string[];
+
+	render(options: {
+		/** The name of the current block, e.g. `idea` for an `:::idea` block. */
+		blockName: string;
+
+		/**
+		 * The plain text content of the  label for the current block.
+		 */
+		labelText: string | undefined;
+
+		/**
+		 * An AST of the label for the current block.
+		 *
+		 * The content can be the default label or a user-provided label, e.g. `"Idea"` for an `:::idea`
+		 * block or `"Try this!"` for an `:::idea[Try this!]` block.
+		 *
+		 * This may include inline elements for user-provided labels that include Markdown formatting,
+		 * e.g.
+		 * ```md
+		 * :::idea[Try the `Code` component]
+		 * ```
+		 */
+		label: PhrasingContent[];
+
+		/**
+		 * AST representing the children of the current block.
+		 */
+		children: ContainerDirective['children'];
+
+		/** User-defined attributes for this directive like `class` or `id`. */
+		attributes: NonNullable<ContainerDirective['attributes']>;
+
+		/**
+		 * A utility for quickly creating an AST representation of an HTML element.
+		 * Use this to template the HTML for your Markdown block.
+		 *
+		 * @example
+		 * // Render <figure class="picture-frame"> with the block’s children and a caption.
+		 * h('figure', { class: 'picture-frame' }, [
+		 *   ...children,
+		 *   h('figcaption', {}, label);
+		 * ]);
+		 */
+		h(el: string, attrs?: Properties, children?: Element[]): Element;
+	}): Element | Element[];
 }
 
 export interface RemarkCustomBlocksOptions {
@@ -24,13 +76,16 @@ export interface RemarkCustomBlocksOptions {
 	 *
 	 * @example
 	 * // This would enable a `:::idea` custom block syntax in Markdown and MDX files.
-	 * variants: {
+	 * blocks: {
 	 *   idea: {
 	 *     label: 'Idea',
-	 *     color: 'purple',
-	 *     icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M17.09 2.82a8 8 0 0 0-6.68-1.66 8 8 0 0 0-6.27 6.32 8.07 8.07 0 0 0 1.72 6.65A4.54 4.54 0 0 1 7 17v3a3 3 0 0 0 3 3h4a3 3 0 0 0 3-3v-2.81A5.17 5.17 0 0 1 18.22 14a8 8 0 0 0-1.13-11.2ZM15 20a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-1h6Zm1.67-7.24A7.13 7.13 0 0 0 15 17h-2v-3a1 1 0 0 0-2 0v3H9a6.5 6.5 0 0 0-1.6-4.16 6 6 0 0 1 3.39-9.72A6 6 0 0 1 18 9a5.89 5.89 0 0 1-1.33 3.76Z"/></svg>',
-	 *   }
-	 * }
+	 *     // render <div class="idea"><h2>{label}</h2>...</div>
+	 *     render: ({ h, label, children }) => h('div', { class: 'idea' }, [
+	 *       h('h2', {}, label),
+	 *       ...children,
+	 *     ]),
+	 *   },
+	 * },
 	 */
-	variants: Record<string, CustomBlockVariant>;
+	blocks: Record<string, MarkdownBlock>;
 }
