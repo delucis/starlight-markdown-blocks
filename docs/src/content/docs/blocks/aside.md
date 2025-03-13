@@ -95,3 +95,21 @@ The HTML element to use as the wrapper for the aside.
 
 By default, an `<aside>` element is used to match Starlight’s built-in asides.
 However, an `<aside>` implies that the block’s content is complementary or secondary information, so you could choose to specify a different element if it is more appropriate for your callout type.
+
+## Styling
+
+If you want to customize your asides further, you can do so using [custom CSS](https://starlight.astro.build/guides/css-and-tailwind/#custom-css-styles).
+
+Custom asides have a classname of `starlight-custom-aside--BLOCK-NAME` that can be targeted in CSS.
+For example, `:::idea` asides could be styled like this to customize their appearance:
+
+```css "idea"
+.starlight-custom-aside--idea {
+	border: 1px solid var(--sl-color-green);
+	border-radius: 0.5rem;
+
+	.starlight-aside__title {
+		text-transform: uppercase;
+	}
+}
+```

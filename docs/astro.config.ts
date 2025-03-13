@@ -40,14 +40,9 @@ export default defineConfig({
 				}),
 			],
 			sidebar: [
-				{
-					label: 'Start Here',
-					items: [{ slug: 'getting-started' }],
-				},
-				{
-					label: 'Built-in blocks',
-					autogenerate: { directory: 'blocks' },
-				},
+				'getting-started',
+				{ label: 'Built-in blocks', autogenerate: { directory: 'blocks' } },
+				{ label: 'Custom blocks', items: ['custom-blocks', 'custom-blocks-reference'] },
 			],
 			credits: true,
 		}),
