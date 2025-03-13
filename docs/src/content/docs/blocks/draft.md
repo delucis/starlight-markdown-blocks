@@ -27,7 +27,7 @@ Import `Draft` in `astro.config.mjs` and use it in the `starlightMarkdownBlocks`
 // astro.config.mjs
 import starlight from '@astrojs/starlight';
 import { defineConfig } from 'astro/config';
-import starlightMarkdownBlocks, { Aside } from 'starlight-markdown-blocks';
+import starlightMarkdownBlocks, { Draft } from 'starlight-markdown-blocks';
 
 export default defineConfig({
 	integrations: [
