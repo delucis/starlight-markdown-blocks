@@ -33,11 +33,11 @@ starlightMarkdownBlocks({
 ## Writing a render function
 
 The render function controls the HTML markup for a custom block.
-It receives the [`label`](/custom-blocks-reference/#label-1) and [`children`](/custom-blocks-reference/#children) as well as some additional [context](/custom-blocks-reference/#rendercontext) for the current block. It should return an abstract syntax tree (AST) representing the HTML for your block.
+It receives the [`label`](/starlight-markdown-blocks/custom-blocks-reference/#label-1) and [`children`](/starlight-markdown-blocks/custom-blocks-reference/#children) as well as some additional [context](/starlight-markdown-blocks/custom-blocks-reference/#rendercontext) for the current block. It should return an abstract syntax tree (AST) representing the HTML for your block.
 
 ### Creating HTML elements
 
-The render function receives a utility function [`h()`](/custom-blocks-reference/#h) that can create AST nodes representing HTML elements.
+The render function receives a utility function [`h()`](/starlight-markdown-blocks/custom-blocks-reference/#h) that can create AST nodes representing HTML elements.
 
 For example, this simple render function renders a `<marquee>` element containing the text “Check this out!”:
 
