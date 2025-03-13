@@ -1,5 +1,3 @@
-/// <reference types="mdast-util-directive" />
-
 import { h as _h, type Properties } from 'hastscript';
 import type { Node, Paragraph as P, PhrasingContent, Root } from 'mdast';
 import type { ContainerDirective } from 'mdast-util-directive';
