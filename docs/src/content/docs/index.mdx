@@ -7,10 +7,10 @@ head:
   - tag: style
     content: >-
       .hero-html {
-        --size: 12rem;
+        --size: min(10rem, calc(5rem + 7vw));
         font-size: var(--size);
         justify-content: center;
-        line-height: var(--size);
+        user-select: none;
       }
 template: splash
 editUrl: false
@@ -22,41 +22,28 @@ hero:
     - text: Get Started
       link: /getting-started/
       icon: right-arrow
+    - text: Star on GitHub
+      link: https://github.com/delucis/starlight-markdown-blocks
+      icon: github
+      variant: minimal
 ---
-
-:::question
-We were wondering…
-:::
-
-:::tip
-Does this match?
-:::
-
-:::woah
-I can’t believe it
-:::
-
-:::woah[Does `inline` Markdown *work*?]
-Yup!
-:::
-
-:::figure[Great Blue Heron]
-![](https://live.staticflickr.com/65535/51792833621_0c9da5df8d_z.jpg)
-:::
-
-:::delete
-This is some content that will get deleted entirely.
-:::
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 
-## Next steps
+## Features
 
-<CardGrid stagger>
-	<Card title="Install the plugin" icon="puzzle">
-		Check the [getting started guide](/getting-started/) for installation instructions.
-	</Card>
-	<Card title="Configure the plugin" icon="setting">
-		Edit your config in the `astro.config.mjs` file.
-	</Card>
+<CardGrid>
+
+    <Card title="Markdown syntax" icon="seti:markdown">
+    	Use the same `:::block` syntax as Starlight’s asides for your own custom blocks.
+    </Card>
+
+    <Card title="Aside variants" icon="pen">
+    	Built-in support for rendering variants of Starlight’s asides with custom colors and icons.
+    </Card>
+
+    <Card title="Custom blocks" icon="setting">
+    	Write custom block renderers for your use case.
+    </Card>
+
 </CardGrid>

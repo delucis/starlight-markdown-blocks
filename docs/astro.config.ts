@@ -5,6 +5,10 @@ import starlightMarkdownBlocks, { Aside } from 'starlight-markdown-blocks';
 export default defineConfig({
 	integrations: [
 		starlight({
+			title: 'Starlight Markdown Blocks',
+			social: {
+				github: 'https://github.com/delucis/starlight-markdown-blocks',
+			},
 			editLink: {
 				baseUrl: 'https://github.com/delucis/starlight-markdown-blocks/edit/main/docs/',
 			},
@@ -31,10 +35,7 @@ export default defineConfig({
 					items: [{ slug: 'getting-started' }],
 				},
 			],
-			social: {
-				github: 'https://github.com/delucis/starlight-markdown-blocks',
-			},
-			title: 'Starlight Markdown Blocks',
+			credits: true,
 		}),
 	],
 });
