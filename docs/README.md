@@ -14,6 +14,4 @@ Content can be found in the [`src/content/docs/`](./src/content/docs/) directory
 
 ## License
 
-Licensed under the MIT License, Copyright © delucis.
-
-See [LICENSE](/LICENSE) for more information.
+[MIT](/LICENSE)

@@ -1,15 +1,11 @@
-# `starlight-markdown-blocks`
+# Starlight Markdown Blocks
 
-Extend Starlight’s Markdown asides syntax with custom block types
+Extend Starlight’s Markdown asides syntax with custom block types.
 
 ## Documentation
 
-Want to get started immediately?
-
-Check out the `starlight-markdown-blocks` getting started guide.
+See the [Starlight Markdown Blocks documentation](https://delucis.github.io/starlight-markdown-blocks/) site for details.
 
 ## License
 
-Licensed under the MIT License, Copyright © delucis.
-
-See [LICENSE](https://github.com/delucis/starlight-markdown-blocks/blob/main/LICENSE) for more information.
+[MIT](https://github.com/delucis/starlight-markdown-blocks/blob/main/LICENSE)
