@@ -29,9 +29,9 @@ export interface MarkdownBlock {
 		blockName: string;
 
 		/**
-		 * The plain text content of the  label for the current block.
+		 * The plain text content of the label for the current block.
 		 */
-		labelText: string | undefined;
+		labelText: string;
 
 		/**
 		 * An AST of the label for the current block.
