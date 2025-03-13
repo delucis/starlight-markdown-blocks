@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@astrojs/starlight": "^0.32.2",
-    "astro": "^5.4.3",
+    "astro": "^5.5.2",
     "sharp": "^0.33.5",
     "starlight-markdown-blocks": "workspace:*"
   },
