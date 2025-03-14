@@ -1,5 +1,6 @@
 ---
 title: Custom blocks
+description: Learn how to write your own renderers for custom Markdown blocks
 ---
 
 As well as built-in blocks, Starlight Markdown Blocks allows you to write custom block renderers to control the mark-up needed for your specific use case.

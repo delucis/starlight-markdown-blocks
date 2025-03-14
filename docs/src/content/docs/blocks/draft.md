@@ -1,5 +1,6 @@
 ---
 title: Draft
+description: Learn how to use the Starlight Markdown Blocks built-in Draft component
 ---
 
 The `Draft` block type hides its contents when building your site.

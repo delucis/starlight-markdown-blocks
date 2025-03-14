@@ -1,5 +1,6 @@
 ---
 title: Aside
+description: Learn how to use the Starlight Markdown Blocks built-in Aside component
 ---
 
 The `Aside` block type renders an aside (also known as “callout” or “admonition”) in the same style as Starlight’s built-in asides.

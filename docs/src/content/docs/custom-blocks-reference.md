@@ -1,5 +1,6 @@
 ---
 title: Custom blocks API reference
+description: Technical reference describing the Starlight Markdown Blocks custom block API
 sidebar:
   label: API reference
 tableOfContents:
