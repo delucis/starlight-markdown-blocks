@@ -47,6 +47,23 @@ export default defineConfig({
 				{ label: 'Custom blocks', items: ['custom-blocks', 'custom-blocks-reference'] },
 			],
 			credits: true,
+			head: [
+				{
+					tag: 'meta',
+					attrs: {
+						property: 'og:image',
+						content: 'https://delucis.github.io/starlight-markdown-blocks/og.png',
+					},
+				},
+				{
+					tag: 'meta',
+					attrs: {
+						property: 'og:image:alt',
+						content:
+							'Starlight Markdown Blocks: Extend Starlight’s asides syntax and render custom block types',
+					},
+				},
+			],
 		}),
 	],
 });
