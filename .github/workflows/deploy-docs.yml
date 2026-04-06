@@ -19,12 +19,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout your repository using git
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Install, build, and upload your site output
-        uses: withastro/action@v3
+        uses: withastro/action@v6
         with:
           path: ./docs
-          node-version: 20
+          node-version: 24
           package-manager: pnpm
 
   deploy:
@@ -36,4 +36,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
