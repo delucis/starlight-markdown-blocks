@@ -47,7 +47,7 @@ export default defineConfig({
 			],
 			sidebar: [
 				'getting-started',
-				{ label: 'Built-in blocks', autogenerate: { directory: 'blocks' } },
+				{ label: 'Built-in blocks', items: [{ autogenerate: { "directory": "blocks" } }] },
 				{ label: 'Custom blocks', items: ['custom-blocks', 'custom-blocks-reference'] },
 			],
 			credits: true,
