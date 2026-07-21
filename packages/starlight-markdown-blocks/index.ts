@@ -33,6 +33,14 @@ export default function starlightMarkdownBlocks(options: MarkdownBlocksOptions):
 					name: 'starlight-markdown-blocks',
 					hooks: {
 						'astro:config:setup'({ updateConfig }) {
+							// @ts-ignore — When building against Astro v5, `config.markdown.processor` is not available.
+							if (config.markdown?.processor && config.markdown.processor.name !== 'unified') {
+								throw new Error(
+									'Found incompatible Markdown processor.\n' +
+										'Currently starlight-markdown-blocks only supports the unified processor.\n' +
+										'See https://docs.astro.build/en/guides/markdown-content/#switching-to-the-unified-processor',
+								);
+							}
 							updateConfig({ markdown: { remarkPlugins: [[remarkBlocks, options]] } });
 						},
 					},
