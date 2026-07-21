@@ -1,10 +1,14 @@
 import starlight from '@astrojs/starlight';
 import { defineConfig } from 'astro/config';
 import starlightMarkdownBlocks, { Aside, Draft } from 'starlight-markdown-blocks';
+import { unified } from '@astrojs/markdown-remark';
 
 export default defineConfig({
 	site: 'https://delucis.github.io',
 	base: '/starlight-markdown-blocks',
+	markdown: {
+		processor: unified(),
+	},
 	integrations: [
 		starlight({
 			title: 'Starlight Markdown Blocks',
@@ -47,7 +51,7 @@ export default defineConfig({
 			],
 			sidebar: [
 				'getting-started',
-				{ label: 'Built-in blocks', autogenerate: { directory: 'blocks' } },
+				{ label: 'Built-in blocks', items: [{ autogenerate: { "directory": "blocks" } }] },
 				{ label: 'Custom blocks', items: ['custom-blocks', 'custom-blocks-reference'] },
 			],
 			credits: true,
