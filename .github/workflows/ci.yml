@@ -20,4 +20,4 @@ jobs:
           cache: pnpm
       - run: pnpm i
       - run: pnpm build
-      - run: pnpm build:docs
+        working-directory: docs
