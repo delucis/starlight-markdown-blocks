@@ -25,7 +25,7 @@ export default function starlightMarkdownBlocks(options: MarkdownBlocksOptions):
 	return {
 		name: 'starlight-markdown-blocks',
 		hooks: {
-			'config:setup'({ config, addIntegration, updateConfig }) {
+			'config:setup'({ config, addIntegration, astroConfig, updateConfig }) {
 				updateConfig({
 					customCss: [...(config.customCss || []), ...cssFiles],
 				});
@@ -33,8 +33,11 @@ export default function starlightMarkdownBlocks(options: MarkdownBlocksOptions):
 					name: 'starlight-markdown-blocks',
 					hooks: {
 						'astro:config:setup'({ updateConfig }) {
-							// @ts-ignore — When building against Astro v5, `config.markdown.processor` is not available.
-							if (config.markdown?.processor && config.markdown.processor.name !== 'unified') {
+							// @ts-ignore — In Astro v5 `markdown.processor` is not available.
+							if (
+								astroConfig.markdown?.processor &&
+								astroConfig.markdown.processor.name !== 'unified'
+							) {
 								throw new Error(
 									'Found incompatible Markdown processor.\n' +
 										'Currently starlight-markdown-blocks only supports the unified processor.\n' +
