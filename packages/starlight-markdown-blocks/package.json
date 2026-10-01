@@ -10,8 +10,8 @@
 		"./styles/*": "./styles/*"
 	},
 	"devDependencies": {
-		"@astrojs/starlight": "^0.42.0",
-		"astro": "^7.3.2"
+		"@astrojs/starlight": "^0.42.4",
+		"astro": "^7.3.5"
 	},
 	"peerDependencies": {
 		"@astrojs/starlight": ">=0.32"
