@@ -33,8 +33,8 @@ importers:
         specifier: workspace:*
         version: link:../packages/starlight-markdown-blocks
       starlight-package-managers:
-        specifier: ^0.12.0
-        version: 0.12.0(@astrojs/starlight@0.42.0(@astrojs/markdown-remark@7.3.1)(astro@7.3.2(@astrojs/markdown-remark@7.3.1)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@24.12.2)(yaml@2.9.0))(typescript@5.9.3))
+        specifier: ^0.13.0
+        version: 0.13.0(@astrojs/starlight@0.42.0(@astrojs/markdown-remark@7.3.1)(astro@7.3.2(@astrojs/markdown-remark@7.3.1)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@24.12.2)(yaml@2.9.0))(typescript@5.9.3))
 
   packages/starlight-markdown-blocks:
     dependencies:
@@ -1874,11 +1874,10 @@ packages:
   space-separated-tokens@2.0.2:
     resolution: {integrity: sha512-PEGlAwrG8yXGXRjW32fGbg66JAlOAwbObuqVoJpv/mRgoWDQfgH1wDPvtzWyUSNAXBGSk8h755YDbbcEy3SH2Q==}
 
-  starlight-package-managers@0.12.0:
-    resolution: {integrity: sha512-hAIVzOT0/Git+T2Uwckh2rs51fYiDM6/X+Z2f3LtKMSwOwm+nSUAX2Ilp7k+07LDtxYjmvfTCxhfIBt0PgOF5g==}
-    engines: {node: '>=18.17.1'}
+  starlight-package-managers@0.13.0:
+    resolution: {integrity: sha512-Jcvx7oLA2hWlNMsYI42Ny5vZ0lZov18M/0+aiXmY59Wo+GmhTjJPRpGEbIN0yJsGLoJPFTegcMArjNVU0SvROQ==}
     peerDependencies:
-      '@astrojs/starlight': '>=0.22.0'
+      '@astrojs/starlight': '>=0.32.0'
 
   stream-replace-string@2.0.0:
     resolution: {integrity: sha512-TlnjJ1C0QrmxRNrON00JvaFFlNh5TTG00APw23j74ET7gkQpTASi6/L2fuiav8pzK715HXtUeClpBTw2NPSn6w==}
@@ -4474,7 +4473,7 @@ snapshots:
 
   space-separated-tokens@2.0.2: {}
 
-  starlight-package-managers@0.12.0(@astrojs/starlight@0.42.0(@astrojs/markdown-remark@7.3.1)(astro@7.3.2(@astrojs/markdown-remark@7.3.1)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@24.12.2)(yaml@2.9.0))(typescript@5.9.3)):
+  starlight-package-managers@0.13.0(@astrojs/starlight@0.42.0(@astrojs/markdown-remark@7.3.1)(astro@7.3.2(@astrojs/markdown-remark@7.3.1)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@24.12.2)(yaml@2.9.0))(typescript@5.9.3)):
     dependencies:
       '@astrojs/starlight': 0.42.0(@astrojs/markdown-remark@7.3.1(supports-color@7.2.0))(astro@7.3.2(@astrojs/markdown-remark@7.3.1(supports-color@7.2.0))(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@24.12.2)(yaml@2.9.0))(supports-color@7.2.0)(typescript@5.9.3)
 
