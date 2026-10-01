@@ -16,7 +16,7 @@
     "@astrojs/markdown-remark": "^7.3.1",
     "@astrojs/starlight": "^0.42.4",
     "astro": "^7.3.5",
-    "sharp": "^0.35.4",
+    "sharp": "^0.35.5",
     "starlight-markdown-blocks": "workspace:*",
     "starlight-package-managers": "^0.13.0"
   },
