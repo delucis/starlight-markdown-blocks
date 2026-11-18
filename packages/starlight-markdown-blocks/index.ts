@@ -19,7 +19,9 @@ export type { MarkdownBlock } from './types';
  *   }),
  * ],
  */
-export default function starlightMarkdownBlocks(options: MarkdownBlocksOptions): StarlightPlugin {
+export default function starlightMarkdownBlocks(
+	options: MarkdownBlocksOptions,
+): StarlightPlugin {
 	const cssFiles = [...new Set(Object.values(options.blocks).flatMap((block) => block.css ?? []))];
 
 	return {
@@ -29,22 +31,23 @@ export default function starlightMarkdownBlocks(options: MarkdownBlocksOptions):
 				updateConfig({
 					customCss: [...(config.customCss || []), ...cssFiles],
 				});
+
 				addIntegration({
 					name: 'starlight-markdown-blocks',
 					hooks: {
-						'astro:config:setup'({ updateConfig }) {
-							// @ts-ignore — In Astro v5 `markdown.processor` is not available.
-							if (
-								astroConfig.markdown?.processor &&
-								astroConfig.markdown.processor.name !== 'unified'
-							) {
+						'astro:config:setup'() {
+							const processor = astroConfig.markdown?.processor;
+
+							if (!processor || processor.name !== 'unified') {
 								throw new Error(
 									'Found incompatible Markdown processor.\n' +
 										'Currently starlight-markdown-blocks only supports the unified processor.\n' +
 										'See https://docs.astro.build/en/guides/markdown-content/#switching-to-the-unified-processor',
 								);
 							}
-							updateConfig({ markdown: { remarkPlugins: [[remarkBlocks, options]] } });
+
+							processor.options.remarkPlugins ??= [];
+							processor.options.remarkPlugins.push([remarkBlocks, options]);
 						},
 					},
 				});
